@@ -117,3 +117,11 @@ Route::get('/latihan1/{nama2}/{telpon2}/{jenisbarang2}/{namabarang2}/{jumlah2}/{
         '<br>Total Pembayaran : ' .$totalp;
         ;
 });
+
+Route::get('/siswa', function(){
+
+    $data_siswa = ['regita', 'hana', 'dhea', 'abel', 'kiki'];
+
+    return view('tampil', compact('data_siswa'));
+
+});
