@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\SiswasConttroller;
+use App\Http\Controllers\PpdbsController;
+use App\Models\Barang;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -118,10 +124,47 @@ Route::get('/latihan1/{nama2}/{telpon2}/{jenisbarang2}/{namabarang2}/{jumlah2}/{
         ;
 });
 
-Route::get('/siswa', function(){
+// Route::get('/siswa', function(){
 
-    $data_siswa = ['regita', 'hana', 'dhea', 'abel', 'kiki'];
+//     $data_siswa = ['regita', 'hana', 'dhea', 'abel', 'kiki'];
 
-    return view('tampil', compact('data_siswa'));
+//     return view('tampil', compact('data_siswa'));
 
-});
+// });
+
+Route::get('/post',[PostController::class,'menampilkan']);
+Route::get('/barang',[PostController::class,'menampilkan2']);
+
+
+
+// berdasarkan id
+// Route::get('/post', function () {
+//     $post = Post::where('id', 1)->get();
+//     return view('tampil_post', compact('post'));
+
+// });
+
+// berdasarkan kata
+// Route::get('/post', function () {
+//     $post = Post::where('title', 'LIKE', '%tips %')->get();
+//     return view('tampil_post', compact('post'));
+
+// });
+
+
+
+// Route::get('/barang', function () {
+
+//     $barang = Barang::all();
+//     return view('tampil_barang', compact('barang'));
+
+// });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// CRUD
+Route::resource('siswa', SiswasConttroller::class);
+
+Route::resource('ppdb', PpdbsController::class);
